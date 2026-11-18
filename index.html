@@ -1,0 +1,77 @@
+# ==========================================
+# PRICECHECK - SMART PRICE & CASHIER
+# Aplikasi Pengecek Harga dan Kasir Sederhana
+# ==========================================
+
+print("=" * 42)
+print("       PRICECHECK")
+print("   SMART PRICE & CASHIER")
+print("=" * 42)
+
+# Input data barang
+nama = input("Nama barang       : ")
+harga = int(input("Harga satuan (Rp) : "))
+jumlah = int(input("Jumlah barang     : "))
+
+# Menentukan kategori harga
+if harga < 20000:
+    kategori = "MURAH"
+    emoji = "[HIJAU] 🟢"
+    keterangan = "Harga terjangkau!"
+elif harga <= 50000:
+    kategori = "NORMAL"
+    emoji = "[KUNING] 🟡"
+    keterangan = "Harga dalam kategori normal."
+else:
+    kategori = "MAHAL"
+    emoji = "[MERAH] 🔴"
+    keterangan = "Harga cukup tinggi."
+
+# Menghitung transaksi
+subtotal = harga * jumlah
+
+if subtotal >= 100000:
+    diskon = subtotal * 10 // 100
+else:
+    diskon = 0
+
+total = subtotal - diskon
+
+# Menampilkan kategori harga
+print("\n" + "=" * 42)
+print("          HASIL PRICE CHECK")
+print("=" * 42)
+print("Nama barang :", nama)
+print("Harga satuan:", f"Rp{harga:,}")
+print("Kategori    :", emoji, kategori)
+print("Keterangan  :", keterangan)
+
+# Menampilkan rincian transaksi
+print("\n" + "-" * 42)
+print("             STRUK BELANJA")
+print("-" * 42)
+print("Jumlah barang:", jumlah)
+print("Subtotal     :", f"Rp{subtotal:,}")
+print("Diskon       :", f"Rp{diskon:,}")
+print("Total bayar  :", f"Rp{total:,}")
+
+# Input pembayaran
+uang = int(input("\nUang pembayaran (Rp): "))
+
+# Menghitung kembalian
+print("\n" + "=" * 42)
+
+if uang >= total:
+    kembalian = uang - total
+    print("       TRANSAKSI BERHASIL!")
+    print("Uang pembayaran:", f"Rp{uang:,}")
+    print("Kembalian      :", f"Rp{kembalian:,}")
+else:
+    kekurangan = total - uang
+    print("       PEMBAYARAN KURANG!")
+    print("Uang pembayaran:", f"Rp{uang:,}")
+    print("Kekurangan     :", f"Rp{kekurangan:,}")
+
+print("=" * 42)
+print("   TERIMA KASIH SUDAH BERBELANJA!")
+print("=" * 42)
